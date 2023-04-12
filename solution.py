@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 from scipy.stats import ttest_ind
+from statsmodels.stats.weightstats import ztest
+
 # Задаем уровень значимости
 alpha = 0.03
 
@@ -10,5 +12,8 @@ def solution(x: np.array, y: np.array) -> bool: # Одна или две выб�
     # Измените код этой функции
     # Это будет вашим решением
     # Не меняйте название функции и её аргументы
-    z_stat, p_val = stats.ttest_ind(x, y, equal_var=False)
-    return p_value < alpha # Ваш ответ, True или False
+    z_stat, p_val = ztest(x, y, equal_var=False)
+   if p_val < alpha:
+    print("Отвергаем нулевую гипотезу, выборки статистически значимо различны")
+else:
+    print("Не отвергаем нулевую гипотезу, выборки статистически не различны")
