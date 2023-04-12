@@ -14,6 +14,6 @@ def solution(x: np.array, y: np.array) -> bool: # Одна или две выб�
     # Не меняйте название функции и её аргументы
     z_stat, p_val = ztest(x, y, equal_var=False)
     if p_val < alpha:
-       return True
+        return True
     else:
         return False
